@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
+    // ตั้งค่า URL ของ Backend ที่ Deploy บน Render
+    const backendURL = 'https://sano-backend2.onrender.com';
+
     if (bookingForm) {
         bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -79,7 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             
             try {
-                const response = await fetch(bookingForm.action, {
+                // แก้ไข fetch ให้ใช้ URL ของ Render
+                const response = await fetch(`${backendURL}/api/bookings`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
