@@ -3,20 +3,32 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // <-- นำเข้า 'cors' ที่นี่
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000; // ใช้ 4000 เป็นค่าเริ่มต้น หาก PORT ไม่ได้ถูกกำหนดใน .env
 
 // Middleware
 app.use(bodyParser.json());
+
+// กำหนด CORS Middleware ก่อน API Routes ทั้งหมด
+const corsOptions = {
+    origin: 'https://reinasano.github.io', // อนุญาตเฉพาะ domain นี้เท่านั้น
+    optionsSuccessStatus: 200 // สำหรับ preflight requests
+}
+app.use(cors(corsOptions));
+
+// Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Route for the main page
+// ตรวจสอบให้แน่ใจว่าไฟล์ index.html อยู่ในโฟลเดอร์ public
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // MongoDB Connection
+// ตรวจสอบให้แน่ใจว่า DATABASE_URL ใน .env ถูกต้องและเชื่อมต่อได้
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
