@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const billModal = document.getElementById('bill-modal');
-    const closeBillButton = billModal.querySelector('.close-button');
+    const closeBillButton = billModal ? billModal.querySelector('.close-button') : null;
     const billDetailsContainer = document.getElementById('bill-details');
     const tableBody = document.getElementById('booking-data');
 
-    // ** เพิ่ม URL ของ Backend ที่ Deploy บน Render ตรงนี้ **
+    // ตั้งค่า URL ของ Backend ที่ Deploy บน Render ตรงนี้
     const backendURL = 'https://sano-backend2.onrender.com';
 
     const fetchBookings = () => {
@@ -85,7 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const fetchBillDetails = (id) => {
         // แก้ไข fetch ให้ใช้ URL ของ Render
         fetch(`${backendURL}/api/bookings/${id}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch bill details');
+                }
+                return response.json();
+            })
             .then(booking => {
                 const price = packagePrices[booking.packageName] || 'ไม่ระบุ';
                 billDetailsContainer.innerHTML = `
@@ -99,7 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 billModal.style.display = 'flex';
             })
-            .catch(error => console.error('Error fetching bill details:', error));
+            .catch(error => {
+                console.error('Error fetching bill details:', error);
+                alert('เกิดข้อผิดพลาดในการดึงรายละเอียดบิล');
+            });
     };
 
     const deleteBooking = (id) => {
