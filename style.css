@@ -1,0 +1,559 @@
+/* style.css */
+
+/* Fonts and Basic Reset */
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    color: #333;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #ff5132;
+}
+
+/* Header and Navigation */
+header {
+    background: #000000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #ff5132;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+#hero {
+    /* background: url('https://via.placeholder.com/1920x1080/f4f4f4/333?text=Hero+Image') no-repeat center center/cover; */
+    background: #020024;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content {
+    /* background: rgba(0, 0, 0, 0.5); */
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background: #ff5132;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn:hover {
+    background: #852a18;
+}
+
+/* Common Section Styles */
+.section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+/* Portfolio Filter */
+.portfolio-filter {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.portfolio-filter .filter-btn {
+    background-color: rgb(255, 185, 173);
+    border: 1px solid #000000;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: 400;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.portfolio-filter .filter-btn:hover {
+    background-color: tomato;
+}
+
+.portfolio-filter .filter-btn.active {
+    background-color: #ff6347;
+    color: white;
+    border-color: #ff6347;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    transition: all 0.5s ease;
+
+}
+
+/* Portfolio Item */
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    width: 100%;
+    height: 300px;
+    cursor: pointer;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+    object-fit: cover;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-item.hidden {
+    transform: scale(0);
+    opacity: 0;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    transition: all 0.5s ease;
+}
+
+.portfolio-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* พื้นหลังสีดำโปร่งแสง */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    opacity: 0; /* ซ่อนไว้ในตอนแรก */
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .overlay {
+    opacity: 1; /* ทำให้มองเห็นได้เมื่อ hover */
+}
+/* Pricing Section */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.pricing-card {
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: #ff5132;
+    color: white;
+    transform: scale(1.05);
+}
+
+.pricing-card:hover .btn{
+    background: white;
+    color: #ff5132;
+}
+.pricing-card:hover ul li i {
+    color: white;
+}
+.pricing-card.featured {
+    background: #ff5132;
+    color: white;
+    transform: scale(1.05);
+}
+
+.pricing-card.featured .btn {
+    background: white;
+    color: #ff5132;
+}
+
+.pricing-card.featured .btn:hover {
+    background: #e5e5e5;
+}
+
+.pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.pricing-card .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.pricing-card ul {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.pricing-card ul li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.pricing-card ul li i {
+    margin-right: 10px;
+    color: #28a745;
+}
+
+.pricing-card.featured ul li i {
+    color: white;
+}
+
+/* Modal (สำหรับดูภาพขนาดใหญ่และการจอง) */
+.modal {
+    display: none; /* ซ่อน Modal ไว้ในตอนแรก */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex; /* แสดง Modal เมื่อมีการเพิ่ม class 'active' */
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 800px;
+}
+
+.booking-form-container {
+    background: #fff;
+    padding: 3rem; /* เพิ่ม padding ให้มีพื้นที่มากขึ้น */
+    border-radius: 12px; /* เพิ่มความโค้งมนของขอบ */
+    max-width: 400px; /* เพิ่มขนาดสูงสุดของฟอร์ม */
+    width: 70%; /* ทำให้ฟอร์มปรับขนาดตามหน้าจอ */
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ดูมีมิติ */
+    text-align: left; /* จัดข้อความภายในฟอร์มให้อยู่ชิดซ้าย */
+    position: relative; /* สำหรับจัดตำแหน่งปุ่มปิด */
+}
+
+/* ดีไซน์ปุ่มปิด */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #555;
+}
+
+/* ดีไซน์หัวข้อในฟอร์ม */
+.booking-form-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+}
+
+/* ดีไซน์ label และ input */
+.booking-form-container label {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+    color: #000;
+    margin-top: 1rem;
+}
+
+.booking-form-container input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box; /* ทำให้ padding ไม่เพิ่มขนาดของ input */
+    font-size: 1rem;
+    color: tomato;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-form-container input:focus {
+    border-color: #ff6347;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
+}
+
+/* ดีไซน์ปุ่มยืนยันการจอง */
+.booking-form-container .btn {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: tomato;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.booking-form-container .btn:hover {
+    background: #e55337;
+}
+
+/* Modal สำหรับขยายรูปภาพ */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.9);
+  align-items: center;
+  justify-content: center;
+}
+
+.image-modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+.close-image-modal-btn {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close-image-modal-btn:hover,
+.close-image-modal-btn:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes zoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Footer */
+footer {
+    background: #000000;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+footer .social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+    color: #ff5132;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        right: 0;
+        top: 8vh;
+        height: 92vh;
+        background-color: #bfbfbf;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    .nav-links li {
+        opacity: 0;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .nav-active {
+        transform: translateX(0%);
+    }
+
+    .burger.toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .burger.toggle .line2 {
+        opacity: 0;
+    }
+    .burger.toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+    
+    .portfolio-filter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .portfolio-filter .filter-btn {
+        flex: 1 1 auto;
+        margin: 5px;
+    }
+    
+    .portfolio-item {
+        height: 200px;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
