@@ -12,9 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const billModal = document.getElementById('bill-modal');
     const closeBillButton = billModal.querySelector('.close-button');
     const billDetailsContainer = document.getElementById('bill-details');
+    const tableBody = document.getElementById('booking-data');
+
+    // ** เพิ่ม URL ของ Backend ที่ Deploy บน Render ตรงนี้ **
+    const backendURL = 'https://sano-backend2.onrender.com';
 
     const fetchBookings = () => {
-        fetch('/api/bookings')
+        // แก้ไข fetch ให้ใช้ URL ของ Render
+        fetch(`${backendURL}/api/bookings`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -22,7 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return response.json();
             })
             .then(bookings => {
-                const tableBody = document.getElementById('booking-data');
+                if (!tableBody) {
+                    console.error('Element with ID "booking-data" not found.');
+                    return;
+                }
                 tableBody.innerHTML = '';
 
                 if (bookings.length === 0) {
@@ -68,13 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
-                const tableBody = document.getElementById('booking-data');
-                tableBody.innerHTML = `<tr><td colspan="8">เกิดข้อผิดพลาดในการดึงข้อมูล</td></tr>`;
+                if (tableBody) {
+                    tableBody.innerHTML = `<tr><td colspan="8">เกิดข้อผิดพลาดในการดึงข้อมูล</td></tr>`;
+                }
             });
     };
 
     const fetchBillDetails = (id) => {
-        fetch(`/api/bookings/${id}`)
+        // แก้ไข fetch ให้ใช้ URL ของ Render
+        fetch(`${backendURL}/api/bookings/${id}`)
             .then(response => response.json())
             .then(booking => {
                 const price = packagePrices[booking.packageName] || 'ไม่ระบุ';
@@ -93,7 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const deleteBooking = (id) => {
-        fetch(`/api/bookings/${id}`, {
+        // แก้ไข fetch ให้ใช้ URL ของ Render
+        fetch(`${backendURL}/api/bookings/${id}`, {
             method: 'DELETE'
         })
         .then(response => {
@@ -107,15 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error deleting booking:', error));
     };
 
-    closeBillButton.addEventListener('click', () => {
-        billModal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === billModal) {
+    if (closeBillButton) {
+        closeBillButton.addEventListener('click', () => {
             billModal.style.display = 'none';
-        }
-    });
+        });
+    }
+
+    if (billModal) {
+        window.addEventListener('click', (e) => {
+            if (e.target === billModal) {
+                billModal.style.display = 'none';
+            }
+        });
+    }
 
     fetchBookings();
 });
