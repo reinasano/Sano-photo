@@ -349,7 +349,60 @@ nav {
     text-align: left; /* จัดข้อความภายในฟอร์มให้อยู่ชิดซ้าย */
     position: relative; /* สำหรับจัดตำแหน่งปุ่มปิด */
 }
+/* สำหรับกล่อง Modal แจ้งเตือน */
+.modal {
+    display: none; /* เริ่มต้นซ่อนไว้ */
+    position: fixed; /* ให้อยู่ด้านบนของทุกอย่าง */
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* พื้นหลังทึบแสง */
+    justify-content: center;
+    align-items: center;
+}
 
+/* เนื้อหาใน Modal */
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+/* ไอคอน */
+.modal-content .icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+/* ข้อความแสดงสถานะ */
+.modal-content h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* ข้อความเพิ่มเติม */
+.modal-content p {
+    margin-top: 10px;
+    color: #666;
+}
+
+/* สีของไอคอนและข้อความ */
+.modal-content.success .icon,
+.modal-content.success h3 {
+    color: #28a745; /* สีเขียวสำหรับสำเร็จ */
+}
+
+.modal-content.loading .icon,
+.modal-content.loading h3 {
+    color: #007bff; /* สีน้ำเงินสำหรับกำลังโหลด */
+}
 /* ดีไซน์ปุ่มปิด */
 .close-btn {
     position: absolute;
