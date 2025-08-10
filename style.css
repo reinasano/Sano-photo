@@ -22,7 +22,7 @@ ul {
 
 a {
     text-decoration: none;
-    color: #ff5132;
+    color: #ffd21f;
 }
 
 /* Header and Navigation */
@@ -62,7 +62,7 @@ nav {
 }
 
 .nav-links li a:hover {
-    color: #ff5132;
+    color: #ffd21f;
 }
 
 .burger {
@@ -80,15 +80,14 @@ nav {
 
 /* Hero Section */
 #hero {
-    /* background: url('https://via.placeholder.com/1920x1080/f4f4f4/333?text=Hero+Image') no-repeat center center/cover; */
-    background: #020024;
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+
+    background: #ffd21f;
     height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: #000000;
 }
 
 .hero-content {
@@ -110,7 +109,7 @@ nav {
 }
 
 .btn {
-    background: #ff5132;
+    background: #000000;
     color: #fff;
     padding: 1rem 2rem;
     border-radius: 50px;
@@ -121,7 +120,7 @@ nav {
 }
 
 .btn:hover {
-    background: #852a18;
+    background: #3b3b3b;
 }
 
 /* Common Section Styles */
@@ -145,7 +144,7 @@ nav {
 }
 
 .portfolio-filter .filter-btn {
-    background-color: rgb(255, 185, 173);
+    background-color: rgb(255, 252, 173);
     border: 1px solid #000000;
     padding: 10px 20px;
     margin: 5px;
@@ -156,13 +155,13 @@ nav {
 }
 
 .portfolio-filter .filter-btn:hover {
-    background-color: tomato;
+    background-color: #FFCB10;
 }
 
 .portfolio-filter .filter-btn.active {
-    background-color: #ff6347;
-    color: white;
-    border-color: #ff6347;
+    background-color: #FFCB10;
+    color: rgb(0, 0, 0);
+    border-color: #000000;
 }
 
 /* Portfolio Grid */
@@ -254,14 +253,14 @@ nav {
 .pricing-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background: #ff5132;
-    color: white;
+    background: #FFCB10;
+    color: rgb(0, 0, 0);
     transform: scale(1.05);
 }
 
 .pricing-card:hover .btn{
     background: white;
-    color: #ff5132;
+    color: #000000;
 }
 .pricing-card:hover ul li i {
     color: white;
@@ -539,7 +538,7 @@ footer .social-links a {
 }
 
 footer .social-links a:hover {
-    color: #ff5132;
+    color: #ffd21f;
 }
 
 /* Responsive Design */

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sano Studio - Admin Dashboard</title>
+    <link rel="stylesheet" href="admin_style.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        <h1>Admin Dashboard</h1>
+        <h2>รายการจองแพ็กเกจ</h2>
+
+        <div class="booking-list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ชื่อลูกค้า</th>
+                        <th>เบอร์ติดต่อ</th>
+                        <th>แพ็กเกจ</th>
+                        <th>วันที่ถ่าย</th>
+                        <th>เวลาถ่าย</th>
+                        <th>สถานที่</th>
+                        <th>ราคา</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody id="booking-data">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="bill-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="bill-container">
+                <h3>บิลค่าบริการถ่ายภาพ</h3>
+                <div id="bill-details">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin_script.js"></script>
+</body>
+</html>
